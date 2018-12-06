@@ -87,6 +87,10 @@
     <!-- Is the notification LED intrusive? Used to decide if there should be a disable option -->
     <bool name="config_intrusiveNotificationLed">true</bool>
 
+    <!-- Does the notification LED support multiple colors?
+         Used to decide if the user can change the colors -->
+    <bool name="config_multiColorNotificationLed">true</bool>
+
     <!-- Default color for notification LED is white. -->
     <color name="config_defaultNotificationColor">#ffffffff</color>
 
@@ -95,6 +99,16 @@
 
     <!-- Default LED off time for notification LED in milliseconds. -->
     <integer name="config_defaultNotificationLedOff">9000</integer>
+
+    <!-- Is the battery LED intrusive? Used to decide if there should be a disable option -->
+    <bool name="config_intrusiveBatteryLed">true</bool>
+
+    <!-- Does the battery LED support multiple colors? Used to decide if the user can change the colors -->
+    <bool name="config_multiColorBatteryLed">true</bool>
+
+    <!-- Do the battery/notification LEDs support pulsing?
+         Used to decide if we show pulse settings -->
+    <bool name="config_ledCanPulse">true</bool>
 
     <!-- reference volume index for music stream to limit headphone volume and display warning -->
     <integer name="config_safe_media_volume_index">4</integer>
@@ -241,9 +255,6 @@
     <!-- Doze: should the TYPE_PICK_UP_GESTURE sensor be used as a pulse signal. -->
     <bool name="config_dozePulsePickup">true</bool>
 
-     <!-- Specify custom blanking delay of the display -->
-    <integer name="config_screen_off_delay">0</integer>
-
     <!-- Type of the double tap sensor. Empty if double tap is not supported. -->
     <string name="config_dozeDoubleTapSensorType" translatable="false">com.google.sensor.double_touch</string>
 
@@ -313,6 +324,11 @@
          phone object irrespective of this config -->
     <bool name="config_switch_phone_on_voice_reg_state_change">false</bool>
 
+    <!-- Default value for proximity check on screen wake
+         NOTE ! - Enable for devices that have a fast response proximity sensor (ideally < 300ms)-->
+    <bool name="config_proximityCheckOnWake">true</bool>
+    <integer name="config_proximityCheckTimeout">100</integer>
+    <bool name="config_proximityCheckOnWakeEnabledByDefault">false</bool>
 
     <!-- Use ERI text for network name on CDMA LTE -->
         <bool name="config_LTE_eri_for_network_name">false</bool>
@@ -344,9 +360,29 @@
     <!-- Colon separated list of package names that should be granted DND access -->
     <string name="config_defaultDndAccessPackages" translatable="false">com.google.android.gms:com.google.android.GoogleCamera:com.google.intelligence.sense:com.google.android.settings.intelligence</string>
 
+
+    <!-- Whether the device supports Smart Pixels -->
+    <bool name="config_enableSmartPixels">true</bool>
+
+         <!-- All the capabilities of the LEDs on this device, stored as a bit field.
+         This integer should equal the sum of the corresponding value for each
+         of the following capabilities present:
+         LIGHTS_RGB_NOTIFICATION_LED = 1
+         LIGHTS_RGB_BATTERY_LED = 2
+         LIGHTS_MULTIPLE_NOTIFICATION_LED = 4 (deprecated)
+         LIGHTS_PULSATING_LED = 8
+         LIGHTS_SEGMENTED_BATTERY_LED = 16
+         LIGHTS_ADJUSTABLE_NOTIFICATION_LED_BRIGHTNESS = 32
+         LIGHTS_BATTERY_LED = 64
+         For example, a device with notification and battery lights
+         that support pulsating and RGB control would set this config
+         to 75. -->
+    <integer name="config_deviceLightCapabilities">75</integer>
+
     <!-- Specify model in case of attestation failure due to misprovisioned device. -->
     <string name="config_misprovisionedDeviceModel" translatable="false">Pixel 2</string>
 
     <!-- Brand value for attestation of misprovisioned device. -->
     <string name="config_misprovisionedBrandValue" translatable="false">htc</string>
+
 </resources>

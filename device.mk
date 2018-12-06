@@ -38,6 +38,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.build.svn=20
 
+
 # Enforce privapp-permissions whitelist
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.control_privapp_permissions=disable
@@ -328,9 +329,12 @@ PRODUCT_PACKAGES += \
 
 # Light HAL
 PRODUCT_PACKAGES += \
-    lights.$(PRODUCT_HARDWARE) \
+    lights.$(PRODUCT_HARDWARE)_sys \
     android.hardware.light@2.0-impl:64 \
     android.hardware.light@2.0-service
+
+# Lights
+PRODUCT_PROPERTY_OVERRIDES += ro.hardware.lights=$(PRODUCT_HARDWARE)_sys
 
 # eSE applet HALs
 PRODUCT_PACKAGES += \
